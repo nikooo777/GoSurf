@@ -1,4 +1,4 @@
-//hi
+float firstCorner[3];
 public Action CommandCreateStartZone (int client, int args)
 {
 	PrintToConsole(client, "starting start-zone creation");
@@ -16,12 +16,12 @@ public int MenuHandlerCornerSelect(Handle menu, MenuAction action, int client, i
 	if (action == MenuAction_Select && item == 0)
 	{
 		PrintToConsole(client, "Selecting corner...");
-		float targetPosition[3];
-		if (!GetAimOrigin(client, targetPosition))
+		
+		if (!GetAimOrigin(client, firstCorner))
 		{
 			ReplyToCommand(client, "Failed getting aim position. You must be looking at a corner destination.");
 		}
-		ReplyToCommand(client, "Coordinates of the first corner: %.2f %.2f %.2f", targetPosition[0], targetPosition[1], targetPosition[2]);
+		ReplyToCommand(client, "Coordinates of the first corner: %.2f %.2f %.2f", firstCorner[0], firstCorner[1], firstCorner[2]);
 	}
 	else if (action == MenuAction_Cancel)
 	{
